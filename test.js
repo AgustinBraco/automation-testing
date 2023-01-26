@@ -1,20 +1,17 @@
 import {Selector} from 'testcafe';
 
 fixture `Empezando con TestCafe`
-    .page `https://www.google.com`;
+.page `https://www.google.com`;
+
+// Selector('ETIQUETA.CLASES')
+const searchField = Selector('input.gLFyf');
+const avatureLink = Selector('h3.LC20lb.MBeuO.DKV0Md');
 
 test('Búsqueda en Google', async t => {
-    // Selector('ETIQUETA.CLASE') el punto significa class
-    // Si hay varios con la misma clase va a tomar el primero
-    const searchField = Selector('input.gLFyf');
-    const ourHistory = Selector('h3.LC20lb.MBeuO.DKV0Md');
-
-    // Lo tenemos por defecto.
     await t
 
-    // Tipear texto en (WEBELEMENT, 'TEXTO')
+    // Tipear texto (WEBELEMENT, 'TEXTO')
     .typeText(searchField, 'avature')
-        .pressKey('enter')
-        // Presionar tecla ENTER
-    .click(ourHistory)
+    .pressKey('enter')
+    .click(avatureLink)
 });

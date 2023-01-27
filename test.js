@@ -3,15 +3,17 @@ import {Selector} from 'testcafe';
 fixture `Empezando con TestCafe`
 .page `https://www.google.com`;
 
-// Selector('ETIQUETA.CLASES')
-const searchField = Selector('input.gLFyf');
-const avatureLink = Selector('h3.LC20lb.MBeuO.DKV0Md');
+const googleSearch = Selector("input.gLFyf");
+const avatureLink = Selector("h3.LC20lb.MBeuO.DKV0Md");
+const careersLink = Selector("#menu-item-41598");
+const avatureSearch = Selector("input.TextField.WizardFieldInputContainer.WizardFieldInput");
 
 test('Búsqueda en Google', async t => {
     await t
-
-    // Tipear texto (WEBELEMENT, 'TEXTO')
-    .typeText(searchField, 'avature')
+    .typeText(googleSearch, 'avature')
     .pressKey('enter')
     .click(avatureLink)
+    .click(careersLink)
+    .typeText(avatureSearch, 'QA')
+    .pressKey('enter')
 });
